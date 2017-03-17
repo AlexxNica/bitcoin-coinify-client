@@ -159,6 +159,32 @@ class Trade extends Exchange.Trade {
     }
   }
 
+  /*
+  Example:
+  {
+	"baseCurrency": "DKK", // must match bank currency
+	"quoteCurrency": "BTC",
+	"baseAmount": 100,
+	"transferIn":{
+		"medium": "blockchain"
+	},
+	"transferOut":{
+		"medium": "bank",
+		"mediumReceiveAccountId": 10039 // bank ID
+	}
+}
+  */
+  sell (quote, bank) {
+    assert(quote, 'Quote required');
+    assert(quote.expiresAt > new Date(), 'QUOTE_EXPIRED');
+
+    console.log('create sell trade', quote, bank)
+
+  }
+
+
+
+
   // QA tool:
   fakeBankTransfer () {
     var self = this;
