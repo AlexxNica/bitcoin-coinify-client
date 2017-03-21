@@ -80,8 +80,9 @@ class Trade extends Exchange.Trade {
     // for sell trades - need bank info
     if (obj.transferIn) {
       if (obj.transferIn.medium === 'blockchain') {
+        var o = obj.transferOut.details.account.number;
         this._bankName = obj.transferOut.details.bank.name;
-        this._lastFourBankAccountDigits = obj.transferOut.details.account.number.substring(obj.transferOut.details.account.number.length, obj.transferOut.details.account.number.length - 4);
+        this._lastFourBankAccountDigits = o.substring(o.length, o.length - 6);
       }
     }
 
