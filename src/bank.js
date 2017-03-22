@@ -42,11 +42,10 @@ Bank.prototype.create = function (bankObj) {
     }
   }
   return this._api.authPOST('bank-accounts', b)
-    .then((res) => {
-      console.log('from bank class', res)
-      return res
+    .catch(err => {
+      console.log('Error saving bank', err);
+      return err;
     })
-    .catch((err) => console.log('ERR creating bank', err))
 }
 
   // create (bankObj) {
@@ -91,6 +90,7 @@ Bank.prototype.create = function (bankObj) {
 
   Bank.prototype.getAll = function () {
     if (!this._delegate.isEmailVerified()) {
+      console.log('email not verified');
       return;
     }
     return this._api.authGET('bank-accounts')
@@ -102,7 +102,6 @@ Bank.prototype.create = function (bankObj) {
 
   Bank.prototype.getOne = function (id) {
     return this._api.authGET(`bank-accounts/${id}`).then((result) => {
-      console.log('bank getOne result', result)
       return result;
     })
   }
