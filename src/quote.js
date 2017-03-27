@@ -46,9 +46,8 @@ class Quote extends Exchange.Quote {
           baseAmount: parseFloat(_baseAmount)
         })
         .then((res) => {
-          console.log('quote res', res)
           return res;
-        })
+        });
       };
 
       if (!api.hasAccount) {

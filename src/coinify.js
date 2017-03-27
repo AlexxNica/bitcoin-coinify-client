@@ -6,7 +6,7 @@ var PaymentMedium = require('./payment-medium');
 var ExchangeRate = require('./exchange-rate');
 var Quote = require('./quote');
 var API = require('./api');
-var Bank = require('./bank')
+var Bank = require('./bank');
 
 var assert = require('assert');
 
@@ -197,9 +197,9 @@ class Coinify extends Exchange.Exchange {
     assert(quote.expiresAt > new Date(), 'QUOTE_EXPIRED');
 
     if (quote.quoteCurrency === 'BTC') {
-      assert(quote.baseCurrency === bank.account.currency, 'Quote and Bank currency must match')
+      assert(quote.baseCurrency === bank.account.currency, 'Quote and Bank currency must match');
     } else {
-      assert(quote.quoteCurrency === bank.account.currency, 'Quote and Bank currency must match')
+      assert(quote.quoteCurrency === bank.account.currency, 'Quote and Bank currency must match');
     }
 
     const sellData = {
@@ -211,10 +211,8 @@ class Coinify extends Exchange.Exchange {
         medium: 'bank',
         mediumReceiveAccountId: bank.id
       }
-    }
-
-    console.log(' before authPOST', sellData)
-    return this._api.authPOST('trades', sellData)
+    };
+    return this._api.authPOST('trades', sellData);
   }
 
   static new (delegate) {

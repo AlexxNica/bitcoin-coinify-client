@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var assert = require('assert');
 
@@ -40,13 +40,13 @@ Bank.prototype.create = function (bankObj) {
         city: bankObj.bank.address.city || null
       }
     }
-  }
+  };
   return this._api.authPOST('bank-accounts', b)
     .catch(err => {
       console.log('Error saving bank', err);
       return err;
-    })
-}
+    });
+};
 
 Bank.prototype.getAll = function () {
   if (!this._delegate.isEmailVerified()) {
@@ -54,15 +54,15 @@ Bank.prototype.getAll = function () {
     return;
   }
   return this._api.authGET('bank-accounts');
-}
+};
 
 Bank.prototype.getOne = function (id) {
   return this._api.authGET(`bank-accounts/${id}`).then((result) => {
     return result;
-  })
-}
+  });
+};
 
 Bank.prototype.deleteOne = function (id) {
   assert(id, 'bankAccount ID required');
   return this._api.DELETE(`bank-accounts/${id}`);
-}
+};
