@@ -82,7 +82,7 @@ class Trade extends Exchange.Trade {
       if (obj.transferIn.medium === 'blockchain') {
         var o = obj.transferOut.details.account.number;
         this._bankName = obj.transferOut.details.bank.name;
-        this._lastFourBankAccountDigits = o.substring(o.length, o.length - 6);
+        this._lastSixBankAccountDigits = o.substring(o.length, o.length - 6);
       }
     }
 

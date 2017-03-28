@@ -41,18 +41,11 @@ Bank.prototype.create = function (bankObj) {
       }
     }
   };
-  return this._api.authPOST('bank-accounts', b)
-    .catch(err => {
-      console.log('Error saving bank', err);
-      return err;
-    });
+  return this._api.authPOST('bank-accounts', b);
 };
 
 Bank.prototype.getAll = function () {
-  if (!this._delegate.isEmailVerified()) {
-    console.log('email not verified');
-    return;
-  }
+  assert(this._delegate.isEmailVerified());
   return this._api.authGET('bank-accounts');
 };
 

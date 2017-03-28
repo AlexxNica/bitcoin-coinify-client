@@ -44,9 +44,6 @@ class Quote extends Exchange.Quote {
           baseCurrency: baseCurrency,
           quoteCurrency: quoteCurrency,
           baseAmount: parseFloat(_baseAmount)
-        })
-        .then((res) => {
-          return res;
         });
       };
 
